@@ -217,6 +217,27 @@ const ThemeLayout = ({ children }) => {
                     },
                 },
             },
+            MuiPagination: {
+                styleOverrides: {
+                    root: {
+                        // '& .MuiPaginationItem-root': {
+                        //     color: '#000',
+                        // },
+                        //
+                        // '& .MuiPaginationItem-root.Mui-selected': {
+                        //     color: '#FFCD19',
+                        // },
+                        //
+                        // '& .MuiPaginationItem-root.Mui-disabled': {
+                        //     color: '#FFCD19',
+                        // },
+                        // button hover color
+                        '& .MuiPaginationItem-root:hover': {
+                            backgroundColor: '#FFCD19',
+                        },
+                    },
+                },
+            },
         },
     })
     return (

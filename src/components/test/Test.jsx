@@ -5,6 +5,7 @@ import AddButton from '../shared/AddButton.jsx'
 import SearchBar from '../shared/SearchBar.jsx'
 import TestTable from '../shared/testTable.jsx'
 import Switch from '../shared/Switch.jsx'
+import TablePaginate from '../shared/TablePaginate.jsx'
 
 const Test = () => {
     const [buttonLoading, setButtonLoading] = useState(false)
@@ -17,12 +18,20 @@ const Test = () => {
     }
 
     const handleAdd = () => {
-        console.log('🚀~ Test:19 ~ ')
+        console.log('🚀~ Test:19 ~  add button click')
     }
+    const [currentPage, setCurrentPage] = useState(1)
+    const [totalPages, setTotalPages] = useState(10)
 
     useEffect(() => {
-        console.log('🚀~ Test:23 ~  ', searchText)
-    }, [searchText])
+        console.log('🚀~ Test:23 ~  searchText', searchText)
+        console.log('🚀~ Test:30 ~ currentPage', currentPage)
+    }, [searchText, currentPage])
+
+    const handlePageChange = (event, value) => {
+        setCurrentPage(value)
+    }
+
     return (
         <Grid container style={{ height: '100vh', width: '100vw' }}>
             <Grid item xs={4}>
@@ -98,7 +107,11 @@ const Test = () => {
                         alignItems: 'center',
                     }}
                 >
-                    Column 3, Row 1
+                    <TablePaginate
+                        totalPages={totalPages}
+                        currentPage={currentPage}
+                        handlePageChange={handlePageChange}
+                    />
                 </div>
                 <div
                     style={{
