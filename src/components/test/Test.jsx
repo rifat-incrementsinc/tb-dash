@@ -6,6 +6,7 @@ import SearchBar from '../shared/SearchBar.jsx'
 import TestTable from '../shared/testTable.jsx'
 import Switch from '../shared/Switch.jsx'
 import TablePaginate from '../shared/TablePaginate.jsx'
+import SortableTable from '../shared/SortableTable.jsx'
 
 const Test = () => {
     const [buttonLoading, setButtonLoading] = useState(false)
@@ -32,6 +33,44 @@ const Test = () => {
         setCurrentPage(value)
     }
 
+    const columns = [
+        { label: 'Dessert', key: 'name' },
+        { label: 'Calories', key: 'calories' },
+        { label: 'Fat (g)', key: 'fat' },
+        { label: 'Carbs (g)', key: 'carbs' },
+        { label: 'Protein (g)', key: 'protein' },
+    ]
+
+    const data = [
+        {
+            name: 'Frozen yoghurt',
+            calories: 159,
+            fat: 6.0,
+            carbs: 24,
+            protein: 4.0,
+        },
+        {
+            name: 'Ice cream sandwich',
+            calories: 237,
+            fat: 9.0,
+            carbs: 37,
+            protein: 4.3,
+        },
+        {
+            name: 'Eclair',
+            calories: 262,
+            fat: 16.0,
+            carbs: 24,
+            protein: 6.0,
+        },
+        {
+            name: 'Cupcake',
+            calories: 305,
+            fat: 3.7,
+            carbs: 67,
+            protein: 4.3,
+        },
+    ]
     return (
         <Grid container style={{ height: '100vh', width: '100vw' }}>
             <Grid item xs={4}>
@@ -123,7 +162,7 @@ const Test = () => {
                         alignItems: 'center',
                     }}
                 >
-                    Column 3, Row 2
+                    <SortableTable columns={columns} data={data} />
                 </div>
             </Grid>
         </Grid>
