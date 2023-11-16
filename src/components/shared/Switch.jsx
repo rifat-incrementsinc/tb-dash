@@ -1,8 +1,18 @@
 import React from 'react'
-const label = { inputProps: { 'aria-label': 'Switch demo' } }
+import Switch from '@mui/material/Switch'
 
-const Switch = () => {
-    return <div>{/*<Switch {...label} defaultChecked />*/}</div>
+const PaySwitch = () => {
+    const [checked, setChecked] = React.useState(true)
+
+    const handleChange = (event) => {
+        setChecked(event.target.checked)
+        console.log('🚀~ Switch:9 ~ ', event.target.checked)
+    }
+    return (
+        <div>
+            <Switch checked={checked} onChange={handleChange} />
+        </div>
+    )
 }
 
-export default Switch
+export default PaySwitch

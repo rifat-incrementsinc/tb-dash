@@ -118,6 +118,71 @@ const ThemeLayout = ({ children }) => {
                     },
                 },
             },
+            // Mui Switch color change, thumb and track change
+            // MuiSwitch: {
+            //     styleOverrides: {
+            //         switchBase: {
+            //             '&.Mui-checked': {
+            //                 color: '#ff1990',
+            //             },
+            //         },
+            //         thumb: {
+            //             color: '#ff1990',
+            //         },
+            //         track: {
+            //             color: '#ff1990',
+            //         },
+            //     },
+            // },
+            MuiSwitch: {
+                styleOverrides: {
+                    switchBase: {
+                        padding: 2,
+                        margin: 11,
+
+                        transitionDuration: '300ms',
+                        '&.Mui-checked': {
+                            transform: 'translateX(16px)',
+                            color: '#FFCD19',
+                            '& + .MuiSwitch-track': {
+                                backgroundColor: '#000', // Use a fixed color value
+                                opacity: 1,
+                                border: 0,
+                            },
+                            '&.Mui-disabled + .MuiSwitch-track': {
+                                color: '#FFCD19',
+
+                                opacity: 0.5,
+                            },
+                        },
+                        // '&.Mui-focusVisible .MuiSwitch-thumb': {
+                        //     color: '#33cf4d',
+                        //     border: '6px solid #fff',
+                        // },
+                        '&.Mui-disabled .MuiSwitch-thumb': {
+                            color: '#FFCD19',
+                        },
+                        '&.Mui-disabled + .MuiSwitch-track': {
+                            color: '#FFCD19',
+                            opacity: 0.7,
+                        },
+                    },
+                    thumb: {
+                        boxSizing: 'border-box',
+                        width: 17,
+                        height: 17,
+                        backgroundColor: '#FFCD19',
+                    },
+                    track: {
+                        boxSizing: 'border-box',
+                        width: 36,
+                        height: 20,
+                        borderRadius: 36 / 2,
+                        backgroundColor: '#C5C5C5', // Use a fixed color value
+                        opacity: 0.7,
+                    },
+                },
+            },
             MuiTableHead: {
                 styleOverrides: {
                     root: {
