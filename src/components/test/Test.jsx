@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Grid } from '@mui/material'
+import { FormControl, Grid, Radio, RadioGroup } from '@mui/material'
 import MyLoadingButton from '../shared/MyLoadingButton.jsx'
 import AddButton from '../shared/AddButton.jsx'
 import SearchBar from '../shared/SearchBar.jsx'
@@ -8,6 +8,7 @@ import Switch from '../shared/Switch.jsx'
 import TablePaginate from '../shared/TablePaginate.jsx'
 import SortableTable from '../shared/SortableTable.jsx'
 import Switches from '../shared/Switches.jsx'
+import FormControlLabel from '@mui/material/FormControlLabel'
 
 const Test = () => {
     const [buttonLoading, setButtonLoading] = useState(false)
@@ -140,6 +141,20 @@ const Test = () => {
                         switchValue={switchValue}
                         setSwitchValue={setSwitchValue}
                     />
+                    <FormControl>
+                        <RadioGroup row>
+                            <FormControlLabel
+                                value='male'
+                                control={<Radio />}
+                                label='Purush'
+                            />
+                            <FormControlLabel
+                                value='mohila'
+                                control={<Radio />}
+                                label='Women'
+                            />
+                        </RadioGroup>
+                    </FormControl>
                 </div>
             </Grid>
             <Grid item xs={4}>
