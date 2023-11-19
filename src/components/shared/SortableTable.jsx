@@ -7,10 +7,6 @@ import TableHead from '@mui/material/TableHead'
 import TableRow from '@mui/material/TableRow'
 import Paper from '@mui/material/Paper'
 import Stack from '@mui/material/Stack'
-import ArrowDropDownOutlinedIcon from '@mui/icons-material/ArrowDropDownOutlined'
-import ArrowDropUpOutlinedIcon from '@mui/icons-material/ArrowDropDownOutlined'
-import ImportExportOutlinedIcon from '@mui/icons-material/ImportExportOutlined'
-
 import ExpandLessOutlinedIcon from '@mui/icons-material/ExpandLessOutlined'
 import ExpandMoreOutlinedIcon from '@mui/icons-material/ExpandMoreOutlined'
 function SortableTable({ columns, data }) {
@@ -52,9 +48,6 @@ function SortableTable({ columns, data }) {
                                 onClick={() => requestSort(column.key)}
                                 sx={{
                                     cursor: 'pointer',
-                                    '&:hover': {
-                                        fontWeight: 'bold',
-                                    },
                                 }}
                             >
                                 <Stack
@@ -84,7 +77,7 @@ function SortableTable({ columns, data }) {
                 <TableBody>
                     {sortedData.map((row) => (
                         <TableRow
-                            key={row.name} // Assuming 'name' is a unique identifier, replace it with the appropriate key
+                            key={row.name}
                             sx={{
                                 '&:last-child td, &:last-child th': {
                                     border: 0,

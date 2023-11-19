@@ -7,6 +7,7 @@ import TestTable from '../shared/testTable.jsx'
 import Switch from '../shared/Switch.jsx'
 import TablePaginate from '../shared/TablePaginate.jsx'
 import SortableTable from '../shared/SortableTable.jsx'
+import Switches from '../shared/Switches.jsx'
 
 const Test = () => {
     const [buttonLoading, setButtonLoading] = useState(false)
@@ -25,8 +26,8 @@ const Test = () => {
     const [totalPages, setTotalPages] = useState(10)
 
     useEffect(() => {
-        console.log('🚀~ Test:23 ~  searchText', searchText)
-        console.log('🚀~ Test:30 ~ currentPage', currentPage)
+        // console.log('🚀~ Test:23 ~  searchText', searchText)
+        // console.log('🚀~ Test:30 ~ currentPage', currentPage)
     }, [searchText, currentPage])
 
     const handlePageChange = (event, value) => {
@@ -71,6 +72,9 @@ const Test = () => {
             protein: 4.3,
         },
     ]
+
+    const [switchValue, setSwitchValue] = useState(true)
+    console.log('🚀~ Test:77 ~ ', switchValue)
     return (
         <Grid container style={{ height: '100vh', width: '100vw' }}>
             <Grid item xs={4}>
@@ -131,7 +135,11 @@ const Test = () => {
                         alignItems: 'center',
                     }}
                 >
-                    <Switch />
+                    {/*<Switch />*/}
+                    <Switches
+                        switchValue={switchValue}
+                        setSwitchValue={setSwitchValue}
+                    />
                 </div>
             </Grid>
             <Grid item xs={4}>

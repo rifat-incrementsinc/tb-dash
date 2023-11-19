@@ -6,7 +6,6 @@ const PaySwitch = () => {
 
     const handleChange = (event) => {
         setChecked(event.target.checked)
-        console.log('🚀~ Switch:9 ~ ', event.target.checked)
     }
     return (
         <div>
