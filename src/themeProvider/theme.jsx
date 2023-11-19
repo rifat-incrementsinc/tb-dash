@@ -5,7 +5,7 @@ import PropTypes from 'prop-types'
 const ThemeLayout = ({ children }) => {
     const theme = createTheme({
         typography: {
-            fontFamily: ['Poppins', 'sans-serif'].join(','),
+            fontFamily: ['IBM Plex Sans', 'sans-serif'].join(','),
             displayLarge: {
                 fontSize: 57,
                 lineHeight: '64px',
@@ -55,8 +55,9 @@ const ThemeLayout = ({ children }) => {
                 lineHeight: '16px',
             },
             bodyLarge: {
-                fontSize: 16,
+                fontSize: '16px',
                 lineHeight: '24px',
+                fontWeight: 400,
             },
             bodyMedium: {
                 fontSize: 14,
@@ -65,6 +66,12 @@ const ThemeLayout = ({ children }) => {
             bodySmall: {
                 fontSize: 12,
                 lineHeight: '16px',
+            },
+            captionLarge: {
+                fontFamily: 'IBM Plex Sans',
+                fontSize: 32,
+                lineHeight: '40px',
+                fontWeight: 700,
             },
         },
         palette: {
@@ -118,6 +125,57 @@ const ThemeLayout = ({ children }) => {
                     },
                 },
             },
+            // Mui textfield focus color change to black
+            MuiTextField: {
+                styleOverrides: {
+                    root: {
+                        backgroundColor: 'rgba(255,255,255,0.8)',
+                        '& label': {
+                            color: 'black',
+                        },
+                        '& label.Mui-focused': {
+                            color: 'black',
+                        },
+                        '& .MuiInput-underline:after': {},
+                        '& .MuiOutlinedInput-root': {
+                            '& fieldset': {
+                                borderColor: '#707070',
+                                border: '0.3px solid #696969',
+                            },
+                            '&:hover fieldset': {
+                                // borderColor: '#696969',
+                                borderColor: 'inherit',
+                            },
+                            '&.Mui-focused fieldset': {
+                                borderColor: '#707070',
+                                border: '0.3px solid #696969',
+                            },
+                        },
+                    },
+                },
+            },
+            //  MUI radio color change
+
+            MuiRadio: {
+                styleOverrides: {
+                    root: {
+                        color: '#FFCD19',
+                        '&.Mui-checked': {
+                            color: '#FFCD19',
+                            borderColor: '#000',
+                        },
+
+                        // '& .MuiSvgIcon-root:not(.MuiSvgIcon-root ~ .MuiSvgIcon-root)':
+                        //     {
+                        //         color: '#C5C5C5',
+                        //     },
+                        // '& .MuiSvgIcon-root + .MuiSvgIcon-root': {
+                        //     color: '#FFCD19',
+                        // },
+                    },
+                },
+            },
+
             // Mui Switch color change, thumb and track change
             // MuiSwitch: {
             //     styleOverrides: {
@@ -134,55 +192,55 @@ const ThemeLayout = ({ children }) => {
             //         },
             //     },
             // },
-            MuiSwitch: {
-                styleOverrides: {
-                    switchBase: {
-                        padding: 2,
-                        margin: 11,
-
-                        transitionDuration: '300ms',
-                        '&.Mui-checked': {
-                            transform: 'translateX(16px)',
-                            color: '#FFCD19',
-                            '& + .MuiSwitch-track': {
-                                backgroundColor: '#000', // Use a fixed color value
-                                opacity: 1,
-                                border: 0,
-                            },
-                            '&.Mui-disabled + .MuiSwitch-track': {
-                                color: '#FFCD19',
-
-                                opacity: 0.5,
-                            },
-                        },
-                        // '&.Mui-focusVisible .MuiSwitch-thumb': {
-                        //     color: '#33cf4d',
-                        //     border: '6px solid #fff',
-                        // },
-                        '&.Mui-disabled .MuiSwitch-thumb': {
-                            color: '#FFCD19',
-                        },
-                        '&.Mui-disabled + .MuiSwitch-track': {
-                            color: '#FFCD19',
-                            opacity: 0.7,
-                        },
-                    },
-                    thumb: {
-                        boxSizing: 'border-box',
-                        width: 17,
-                        height: 17,
-                        backgroundColor: '#FFCD19',
-                    },
-                    track: {
-                        boxSizing: 'border-box',
-                        width: 36,
-                        height: 20,
-                        borderRadius: 36 / 2,
-                        backgroundColor: '#C5C5C5', // Use a fixed color value
-                        opacity: 0.7,
-                    },
-                },
-            },
+            // MuiSwitch: {
+            //     styleOverrides: {
+            //         switchBase: {
+            //             padding: 2,
+            //             margin: 11,
+            //
+            //             transitionDuration: '300ms',
+            //             '&.Mui-checked': {
+            //                 transform: 'translateX(16px)',
+            //                 color: '#FFCD19',
+            //                 '& + .MuiSwitch-track': {
+            //                     backgroundColor: '#000', // Use a fixed color value
+            //                     opacity: 1,
+            //                     border: 0,
+            //                 },
+            //                 '&.Mui-disabled + .MuiSwitch-track': {
+            //                     color: '#FFCD19',
+            //
+            //                     opacity: 0.5,
+            //                 },
+            //             },
+            //             // '&.Mui-focusVisible .MuiSwitch-thumb': {
+            //             //     color: '#33cf4d',
+            //             //     border: '6px solid #fff',
+            //             // },
+            //             '&.Mui-disabled .MuiSwitch-thumb': {
+            //                 color: '#FFCD19',
+            //             },
+            //             '&.Mui-disabled + .MuiSwitch-track': {
+            //                 color: '#FFCD19',
+            //                 opacity: 0.7,
+            //             },
+            //         },
+            //         thumb: {
+            //             boxSizing: 'border-box',
+            //             width: 17,
+            //             height: 17,
+            //             backgroundColor: '#FFCD19',
+            //         },
+            //         track: {
+            //             boxSizing: 'border-box',
+            //             width: 36,
+            //             height: 20,
+            //             borderRadius: 36 / 2,
+            //             backgroundColor: '#C5C5C5', // Use a fixed color value
+            //             opacity: 0.7,
+            //         },
+            //     },
+            // },
             MuiTableHead: {
                 styleOverrides: {
                     root: {
