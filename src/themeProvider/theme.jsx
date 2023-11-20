@@ -37,6 +37,7 @@ const ThemeLayout = ({ children }) => {
             titleMedium: {
                 fontSize: 16,
                 lineHeight: '24px',
+                fontWeight: 700,
             },
             titleSmall: {
                 fontSize: 14,
@@ -90,6 +91,7 @@ const ThemeLayout = ({ children }) => {
             positiveBg: '#DBFFDF',
             errorBg: '#FED8D8',
             goldBg: '#FBEBC3',
+            white: '#FFFFFF',
         },
         components: {
             // body font
@@ -154,7 +156,16 @@ const ThemeLayout = ({ children }) => {
                     },
                 },
             },
-            //  MUI radio color change
+            //  MUI button hover color
+            MuiButton: {
+                styleOverrides: {
+                    root: {
+                        '&:hover': {
+                            backgroundColor: '#FFCD19',
+                        },
+                    },
+                },
+            },
 
             MuiRadio: {
                 styleOverrides: {
