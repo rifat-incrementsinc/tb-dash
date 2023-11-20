@@ -10,14 +10,16 @@ import {
     Radio,
     FormControl,
     Button,
+    Checkbox,
 } from '@mui/material'
 import Stack from '@mui/material/Stack'
-import stepperOne from '../../../assets/stepper_one.svg'
-import stepperTwo from '../../../assets/stepper_two.svg'
 import FileUpload from '../../shared/FileUpload.jsx'
 import FormControlLabel from '@mui/material/FormControlLabel'
 import { useForm, Controller } from 'react-hook-form'
 import SignupDialog from './SignupDialog.jsx'
+import Stepper from '../../shared/Stepper.jsx'
+import CheckBoxOutlinedIcon from '@mui/icons-material/CheckBoxOutlined'
+import { toast } from 'react-toastify'
 
 const backgroundStyle = {
     backgroundImage: `url(${bgImage})`,
@@ -30,8 +32,9 @@ const backgroundStyle = {
     justifyContent: 'center',
 }
 const Signup = () => {
-    const [stepTwo, setStepTwo] = useState(false)
     const [dialogOpen, setDialogOpen] = useState(false)
+    const [activeStep, setActiveStep] = useState(1)
+    const [termsChecked, setTermsChecked] = useState(false)
     const {
         trigger,
         reset,
@@ -41,6 +44,10 @@ const Signup = () => {
     } = useForm()
 
     const onSubmit = (data) => {
+        if (!termsChecked) {
+            toast.warn('You must accept the terms and conditions')
+            return
+        }
         console.log(data)
         console.log('🚀~ Signup:34 ~ ', typeof data)
         setDialogOpen(true)
@@ -54,16 +61,13 @@ const Signup = () => {
             email: '',
         })
     }
-    const toggleStep = () => {
-        setStepTwo(!stepTwo)
-    }
     const nextStep = async (data) => {
         const isValid = await trigger()
 
         if (!isValid) {
             return
         }
-        setStepTwo(!stepTwo)
+        setActiveStep(2)
     }
 
     return (
@@ -122,20 +126,19 @@ const Signup = () => {
                                 start exploring tender opportunities and
                                 managing your tender submissions.
                             </Typography>
+                            <Typography variant={'titleMedium'}>
+                                {activeStep === 2
+                                    ? 'Contact Person'
+                                    : 'Company Information'}
+                            </Typography>
 
+                            <Stepper
+                                activeStep={activeStep}
+                                setActiveStep={setActiveStep}
+                            />
                             <form onSubmit={handleSubmit(onSubmit)}>
-                                {!stepTwo && (
+                                {activeStep === 1 && (
                                     <>
-                                        <Typography variant={'titleMedium'}>
-                                            Company Information
-                                        </Typography>
-                                        <img
-                                            src={stepperOne}
-                                            onClick={toggleStep}
-                                            style={{
-                                                cursor: 'pointer',
-                                            }}
-                                        />
                                         <div style={{ marginBottom: '10px' }}>
                                             <Typography variant={'bodyMedium'}>
                                                 Company Name *
@@ -277,19 +280,8 @@ const Signup = () => {
                                         </Button>
                                     </>
                                 )}
-                                {stepTwo && (
-                                    <>
-                                        <Typography variant={'titleMedium'}>
-                                            Contact Person
-                                        </Typography>
-                                        <img
-                                            src={stepperTwo}
-                                            onClick={toggleStep}
-                                            style={{
-                                                cursor: 'pointer',
-                                            }}
-                                        />
-
+                                {activeStep === 2 && (
+                                    <div>
                                         <div style={{ marginBottom: '10px' }}>
                                             <Typography variant={'bodyMedium'}>
                                                 Name *
@@ -406,14 +398,49 @@ const Signup = () => {
                                                 rules={{ required: true }}
                                             />
                                         </div>
+
+                                        <div
+                                            style={{
+                                                display: 'flex',
+                                                alignItems: 'start',
+                                                marginBottom: '15px',
+                                            }}
+                                        >
+                                            <Checkbox
+                                                checked={termsChecked}
+                                                onChange={() =>
+                                                    setTermsChecked(
+                                                        !termsChecked
+                                                    )
+                                                }
+                                                sx={{
+                                                    width: '24px',
+                                                    marginRight: '10px',
+                                                }}
+                                                checkedIcon={
+                                                    <CheckBoxOutlinedIcon />
+                                                }
+                                            />
+                                            <Typography
+                                                variant={'termsandcondition'}
+                                                sx={{ mt: 1 }}
+                                            >
+                                                I have read and understood the
+                                                terms and condition. I agree all
+                                                the terms & conditions of
+                                                TenderBook.
+                                            </Typography>
+                                        </div>
                                         <Button
                                             variant='contained'
-                                            sx={{ width: '100%' }}
+                                            sx={{
+                                                width: '100%',
+                                            }}
                                             type='submit'
                                         >
                                             Next
                                         </Button>
-                                    </>
+                                    </div>
                                 )}
                             </form>
                         </Stack>

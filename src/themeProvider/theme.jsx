@@ -74,6 +74,26 @@ const ThemeLayout = ({ children }) => {
                 lineHeight: '40px',
                 fontWeight: 700,
             },
+            signSuccess: {
+                fontFamily: 'IBM Plex Sans',
+                fontSize: 24,
+                lineHeight: '32px',
+                fontWeight: 700,
+            },
+            signSuccess2: {
+                fontFamily: 'IBM Plex Sans',
+                fontSize: 16,
+                lineHeight: '24px',
+                fontWeight: 400,
+                color: '#696969',
+            },
+            termsandcondition: {
+                fontFamily: 'IBM Plex Sans',
+                fontSize: 14,
+                lineHeight: '20px',
+                fontWeight: 400,
+                color: '#696969',
+            },
         },
         palette: {
             primary: {
@@ -160,8 +180,15 @@ const ThemeLayout = ({ children }) => {
             MuiButton: {
                 styleOverrides: {
                     root: {
+                        boxShadow: 'none',
+                        textTransform: 'none',
+                        fontSize: '16px',
+                        // '& .MuiTouchRipple-root': {
+                        //     display: 'none',
+                        // },
                         '&:hover': {
                             backgroundColor: '#FFCD19',
+                            boxShadow: 'none',
                         },
                     },
                 },
@@ -283,6 +310,23 @@ const ThemeLayout = ({ children }) => {
                 styleOverrides: {
                     root: {
                         textAlign: 'left',
+                    },
+                },
+            },
+            // mui checkbox color change
+            MuiCheckbox: {
+                styleOverrides: {
+                    root: {
+                        color: '#000',
+                        '&.Mui-checked': {
+                            color: '#000',
+                        },
+                        '& .MuiSvgIcon-root': {
+                            fontSize: '1.5rem',
+                        },
+                        '& .MuiTouchRipple-root': {
+                            display: 'none',
+                        },
                     },
                 },
             },
