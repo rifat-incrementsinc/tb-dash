@@ -1,5 +1,12 @@
 import React, { useEffect, useState } from 'react'
-import { FormControl, Grid, Radio, RadioGroup } from '@mui/material'
+import {
+    Checkbox,
+    FormControl,
+    Grid,
+    Radio,
+    RadioGroup,
+    Stack,
+} from '@mui/material'
 import MyLoadingButton from '../shared/MyLoadingButton.jsx'
 import AddButton from '../shared/AddButton.jsx'
 import SearchBar from '../shared/SearchBar.jsx'
@@ -9,7 +16,9 @@ import TablePaginate from '../shared/TablePaginate.jsx'
 import SortableTable from '../shared/SortableTable.jsx'
 import Switches from '../shared/Switches.jsx'
 import FormControlLabel from '@mui/material/FormControlLabel'
-
+import { toast } from 'react-toastify'
+import Stepper from '../shared/Stepper.jsx'
+import CheckBoxOutlinedIcon from '@mui/icons-material/CheckBoxOutlined'
 const Test = () => {
     const [buttonLoading, setButtonLoading] = useState(false)
     const [searchText, setSearchText] = useState()
@@ -22,6 +31,7 @@ const Test = () => {
 
     const handleAdd = () => {
         console.log('🚀~ Test:19 ~  add button click')
+        toast.success('🦄 Wow so easy!')
     }
     const [currentPage, setCurrentPage] = useState(1)
     const [totalPages, setTotalPages] = useState(10)
@@ -109,6 +119,8 @@ const Test = () => {
                     }}
                 >
                     <SearchBar setSearchText={setSearchText} searchText={''} />
+
+                    <Checkbox checkedIcon={<CheckBoxOutlinedIcon />} />
                 </div>
             </Grid>
             <Grid item xs={4}>

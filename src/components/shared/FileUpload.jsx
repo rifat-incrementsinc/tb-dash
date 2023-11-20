@@ -49,7 +49,15 @@ const FileUpload = ({ setSelectedFile, selectedFile, name }) => {
                     ? trimFileName(selectedFile?.name)
                     : 'Select a file'}
             </Typography>
-            <Button onClick={handleButtonClick} color='primary'>
+            <Button
+                onClick={handleButtonClick}
+                color='primary'
+                sx={{
+                    '&:hover': {
+                        backgroundColor: 'transparent',
+                    },
+                }}
+            >
                 <FileUploadOutlinedIcon />
             </Button>
         </Box>
