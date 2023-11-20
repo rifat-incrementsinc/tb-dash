@@ -173,6 +173,10 @@ const ThemeLayout = ({ children }) => {
                                 border: '0.3px solid #696969',
                             },
                         },
+                        // helper text background color TODO: not working
+                        '& .MuiFormHelperText-root': {
+                            backgroundColor: 'transparent !important',
+                        },
                     },
                 },
             },
@@ -182,6 +186,7 @@ const ThemeLayout = ({ children }) => {
                     root: {
                         boxShadow: 'none',
                         textTransform: 'none',
+                        borderRadius: '100px',
                         fontSize: '16px',
                         // '& .MuiTouchRipple-root': {
                         //     display: 'none',
