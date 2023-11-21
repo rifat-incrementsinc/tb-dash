@@ -2,12 +2,7 @@ import React, { useState } from 'react'
 import { Container } from '@mui/material'
 import './Stepper.css'
 
-const Stepper = ({ activeStep, setActiveStep }) => {
-    // const [activeStep, setActiveStep] = useState(1)
-
-    const handleStepClick = (step) => {
-        setActiveStep(step)
-    }
+const Stepper = ({ activeStep, handleStepClick }) => {
     return (
         <>
             <div className='steper'>

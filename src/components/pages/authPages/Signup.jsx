@@ -20,6 +20,9 @@ import SignupDialog from './SignupDialog.jsx'
 import Stepper from '../../shared/Stepper.jsx'
 import CheckBoxOutlinedIcon from '@mui/icons-material/CheckBoxOutlined'
 import { toast } from 'react-toastify'
+import { Link } from 'react-router-dom'
+import LoadingButton from '@mui/lab/LoadingButton'
+import DoneOutlinedIcon from '@mui/icons-material/DoneOutlined'
 
 const backgroundStyle = {
     backgroundImage: `url(${bgImage})`,
@@ -35,6 +38,8 @@ const Signup = () => {
     const [dialogOpen, setDialogOpen] = useState(false)
     const [activeStep, setActiveStep] = useState(1)
     const [termsChecked, setTermsChecked] = useState(false)
+    const [buttonLoading, setButtonLoading] = useState(false)
+
     const {
         trigger,
         reset,
@@ -42,14 +47,28 @@ const Signup = () => {
         handleSubmit,
         formState: { errors },
     } = useForm()
+    const handleStepClick = async (step) => {
+        if (step === 2) {
+            const isValid = await trigger()
 
-    const onSubmit = (data) => {
+            if (!isValid) {
+                return
+            }
+            setActiveStep(2)
+        }
+        setActiveStep(step)
+    }
+
+    const onSubmit = async (data) => {
         if (!termsChecked) {
             toast.warn('You must accept the terms and conditions')
             return
         }
+        setButtonLoading(true)
         console.log(data)
-        console.log('🚀~ Signup:34 ~ ', typeof data)
+        setTimeout(() => {
+            setButtonLoading(false)
+        }, 4000)
         setDialogOpen(true)
         reset({
             businessAddress: '',
@@ -88,15 +107,17 @@ const Signup = () => {
                         alignItems: 'center',
                         justifyContent: 'center',
                         padding: '20px',
+                        transition: 'height 5s ease-in-out',
                     }}
                 >
-                    <Box
+                    <Stack
                         sx={{
                             display: 'flex',
                             flexDirection: 'column',
                             alignItems: 'center',
                             justifyContent: 'center',
                             width: '450px',
+                            transition: 'height 5s ease-in-out',
                         }}
                     >
                         <Stack
@@ -126,7 +147,10 @@ const Signup = () => {
                                 start exploring tender opportunities and
                                 managing your tender submissions.
                             </Typography>
-                            <Typography variant={'titleMedium'}>
+                            <Typography
+                                variant={'titleMedium'}
+                                sx={{ mb: '16px' }}
+                            >
                                 {activeStep === 2
                                     ? 'Contact Person'
                                     : 'Company Information'}
@@ -134,7 +158,7 @@ const Signup = () => {
 
                             <Stepper
                                 activeStep={activeStep}
-                                setActiveStep={setActiveStep}
+                                handleStepClick={handleStepClick}
                             />
                             <form onSubmit={handleSubmit(onSubmit)}>
                                 {activeStep === 1 && (
@@ -143,29 +167,24 @@ const Signup = () => {
                                             <Typography variant={'bodyMedium'}>
                                                 Company Name *
                                             </Typography>
-
                                             <Controller
                                                 name='companyName'
                                                 control={control}
                                                 defaultValue=''
-                                                render={({
-                                                    field,
-                                                    fieldState,
-                                                }) => (
+                                                render={({ field }) => (
                                                     <TextField
                                                         sx={{ mt: '8px' }}
                                                         fullWidth
                                                         placeholder={
-                                                            'eg. Firstname'
+                                                            'eg. Increments Inc.'
                                                         }
                                                         {...field}
                                                         error={
                                                             !!errors.companyName
                                                         }
                                                         helperText={
-                                                            errors.companyName
-                                                                ? 'Company name is required'
-                                                                : ''
+                                                            errors.companyName &&
+                                                            'Company name is required'
                                                         }
                                                     />
                                                 )}
@@ -331,9 +350,8 @@ const Signup = () => {
                                                             !!errors.designation
                                                         }
                                                         helperText={
-                                                            errors.designation
-                                                                ? 'Designation is required'
-                                                                : ''
+                                                            errors.designation &&
+                                                            'Designation is required'
                                                         }
                                                     />
                                                 )}
@@ -431,20 +449,81 @@ const Signup = () => {
                                                 TenderBook.
                                             </Typography>
                                         </div>
-                                        <Button
+
+                                        <LoadingButton
+                                            loading={buttonLoading}
+                                            loadingPosition='center'
+                                            startIcon={<DoneOutlinedIcon />}
                                             variant='contained'
                                             sx={{
+                                                mt: 3,
+                                                color: 'textPrimary',
                                                 width: '100%',
+                                                height: '40px',
+                                                textTransform: 'none',
+                                                '&.Mui-disabled': {
+                                                    background: '#FFCD19',
+                                                },
+                                                '&:hover': {
+                                                    backgroundColor:
+                                                        'primary.main',
+                                                },
                                             }}
                                             type='submit'
                                         >
-                                            Next
-                                        </Button>
+                                            Sign in
+                                        </LoadingButton>
                                     </div>
                                 )}
                             </form>
+                            <div
+                                style={{
+                                    textAlign: 'center',
+                                    marginTop: '15px',
+                                }}
+                            >
+                                <div
+                                    style={{
+                                        marginBottom: '10px',
+                                    }}
+                                >
+                                    <Typography
+                                        variant={'bodyLarge'}
+                                        color={'textSecondary'}
+                                    >
+                                        Already have an account?{' '}
+                                        <Link
+                                            to={'/'}
+                                            style={{
+                                                textDecoration: 'none',
+                                                cursor: 'pointer',
+                                                color: 'black',
+                                            }}
+                                        >
+                                            Login
+                                        </Link>
+                                    </Typography>
+                                </div>
+                                <div>
+                                    <Link
+                                        to='/test'
+                                        style={{ textDecoration: 'none' }}
+                                    >
+                                        <Typography
+                                            variant={'bodyLarge'}
+                                            color={'textSecondary'}
+                                            sx={{
+                                                cursor: 'pointer',
+                                                textDecoration: 'none',
+                                            }}
+                                        >
+                                            Forgot My Password
+                                        </Typography>
+                                    </Link>
+                                </div>
+                            </div>
                         </Stack>
-                    </Box>
+                    </Stack>
                 </Grid>
             </Grid>
             <SignupDialog

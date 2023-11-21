@@ -173,6 +173,17 @@ const ThemeLayout = ({ children }) => {
                                 border: '0.3px solid #696969',
                             },
                         },
+
+                        // helper text background color
+                        '&  .MuiFormHelperText-root.Mui-error': {
+                            backgroundColor: '#fef9e4',
+                            margin: 0,
+                            paddingTop: 3,
+                            paddingLeft: 3,
+                        },
+                        '& .MuiFormHelperText-root': {
+                            backgroundColor: '#fef9e4',
+                        },
                     },
                 },
             },
@@ -182,6 +193,7 @@ const ThemeLayout = ({ children }) => {
                     root: {
                         boxShadow: 'none',
                         textTransform: 'none',
+                        borderRadius: '100px',
                         fontSize: '16px',
                         // '& .MuiTouchRipple-root': {
                         //     display: 'none',
