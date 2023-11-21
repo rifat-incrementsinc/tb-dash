@@ -453,7 +453,6 @@ const Signup = () => {
                                         <LoadingButton
                                             loading={buttonLoading}
                                             loadingPosition='center'
-                                            startIcon={<DoneOutlinedIcon />}
                                             variant='contained'
                                             sx={{
                                                 mt: 3,
@@ -471,7 +470,7 @@ const Signup = () => {
                                             }}
                                             type='submit'
                                         >
-                                            Sign in
+                                            Next
                                         </LoadingButton>
                                     </div>
                                 )}

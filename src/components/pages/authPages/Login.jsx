@@ -205,7 +205,6 @@ const Login = () => {
                                 <LoadingButton
                                     loading={buttonLoading}
                                     loadingPosition='center'
-                                    startIcon={<DoneOutlinedIcon />}
                                     variant='contained'
                                     sx={{
                                         mt: 3,
