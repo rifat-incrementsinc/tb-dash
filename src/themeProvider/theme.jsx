@@ -13,6 +13,7 @@ const ThemeLayout = ({ children }) => {
             displayMedium: {
                 fontSize: 45,
                 lineHeight: '52px',
+                fontWeight: 700,
             },
             displaySmall: {
                 fontSize: 36,
@@ -33,6 +34,7 @@ const ThemeLayout = ({ children }) => {
             titleLarge: {
                 fontSize: 22,
                 lineHeight: '28px',
+                fontWeight: 400,
             },
             titleMedium: {
                 fontSize: 16,

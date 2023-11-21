@@ -11,11 +11,13 @@ import Location from '../components/Location.jsx'
 import Subscription from '../components/Subscription.jsx'
 import Payment from '../components/Payment.jsx'
 import Settings from '../components/Settings.jsx'
+import ErrorPage from '../components/ErrorPage.jsx'
 
 export const router = createBrowserRouter([
     {
         path: 'admin',
         element: <MainLayout />,
+
         children: [
             {
                 path: 'dashboard',
@@ -57,6 +59,7 @@ export const router = createBrowserRouter([
     },
     {
         path: '/',
+        errorElement: <ErrorPage />,
         element: <Login />,
     },
 
