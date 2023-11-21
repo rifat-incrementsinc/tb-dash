@@ -21,6 +21,8 @@ import Stepper from '../../shared/Stepper.jsx'
 import CheckBoxOutlinedIcon from '@mui/icons-material/CheckBoxOutlined'
 import { toast } from 'react-toastify'
 import { Link } from 'react-router-dom'
+import LoadingButton from '@mui/lab/LoadingButton'
+import DoneOutlinedIcon from '@mui/icons-material/DoneOutlined'
 
 const backgroundStyle = {
     backgroundImage: `url(${bgImage})`,
@@ -36,6 +38,8 @@ const Signup = () => {
     const [dialogOpen, setDialogOpen] = useState(false)
     const [activeStep, setActiveStep] = useState(1)
     const [termsChecked, setTermsChecked] = useState(false)
+    const [buttonLoading, setButtonLoading] = useState(false)
+
     const {
         trigger,
         reset,
@@ -55,13 +59,16 @@ const Signup = () => {
         setActiveStep(step)
     }
 
-    const onSubmit = (data) => {
+    const onSubmit = async (data) => {
         if (!termsChecked) {
             toast.warn('You must accept the terms and conditions')
             return
         }
+        setButtonLoading(true)
         console.log(data)
-        console.log('🚀~ Signup:34 ~ ', typeof data)
+        setTimeout(() => {
+            setButtonLoading(false)
+        }, 4000)
         setDialogOpen(true)
         reset({
             businessAddress: '',
@@ -442,15 +449,30 @@ const Signup = () => {
                                                 TenderBook.
                                             </Typography>
                                         </div>
-                                        <Button
+
+                                        <LoadingButton
+                                            loading={buttonLoading}
+                                            loadingPosition='center'
+                                            startIcon={<DoneOutlinedIcon />}
                                             variant='contained'
                                             sx={{
+                                                mt: 3,
+                                                color: 'textPrimary',
                                                 width: '100%',
+                                                height: '40px',
+                                                textTransform: 'none',
+                                                '&.Mui-disabled': {
+                                                    background: '#FFCD19',
+                                                },
+                                                '&:hover': {
+                                                    backgroundColor:
+                                                        'primary.main',
+                                                },
                                             }}
                                             type='submit'
                                         >
-                                            Next
-                                        </Button>
+                                            Sign in
+                                        </LoadingButton>
                                     </div>
                                 )}
                             </form>
@@ -471,11 +493,11 @@ const Signup = () => {
                                     >
                                         Already have an account?{' '}
                                         <Link
-                                            to={'/login'}
+                                            to={'/'}
                                             style={{
                                                 textDecoration: 'none',
                                                 cursor: 'pointer',
-                                                color: 'inherit',
+                                                color: 'black',
                                             }}
                                         >
                                             Login

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import {
     Grid,
     TextField,
@@ -18,8 +18,12 @@ import { Link } from 'react-router-dom'
 import bgImage from '../../../assets/bg_tb.png'
 import Visibility from '@mui/icons-material/Visibility'
 import VisibilityOff from '@mui/icons-material/VisibilityOff'
+import MyLoadingButton from '../../shared/MyLoadingButton.jsx'
+import DoneOutlinedIcon from '@mui/icons-material/DoneOutlined.js'
+import LoadingButton from '@mui/lab/LoadingButton'
 const Login = () => {
     const [showPassword, setShowPassword] = React.useState(false)
+    const [buttonLoading, setButtonLoading] = useState(false)
 
     const handleTogglePasswordVisibility = () => {
         setShowPassword(!showPassword)
@@ -31,8 +35,11 @@ const Login = () => {
     } = useForm()
 
     const onSubmit = (data) => {
-        // Handle login logic here
+        setButtonLoading(true)
         console.log(data)
+        setTimeout(() => {
+            setButtonLoading(false)
+        }, 8000)
     }
 
     return (
@@ -91,7 +98,7 @@ const Login = () => {
                                 textAlign='left'
                                 sx={{ mb: '16px' }}
                             >
-                                Login
+                                Sign in
                             </Typography>
                             <Typography
                                 variant='bodyLarge'
@@ -100,8 +107,8 @@ const Login = () => {
                                     mb: '16px',
                                 }}
                             >
-                                Enter your credentials to log in to your
-                                account.
+                                Securely access your account and manage your
+                                tenders with a single sign-in.
                             </Typography>
 
                             <form onSubmit={handleSubmit(onSubmit)}>
@@ -195,13 +202,28 @@ const Login = () => {
                                     />
                                 </div>
 
-                                <Button
+                                <LoadingButton
+                                    loading={buttonLoading}
+                                    loadingPosition='center'
+                                    startIcon={<DoneOutlinedIcon />}
                                     variant='contained'
-                                    sx={{ width: '100%' }}
+                                    sx={{
+                                        mt: 3,
+                                        color: 'textPrimary',
+                                        width: '100%',
+                                        height: '40px',
+                                        textTransform: 'none',
+                                        '&.Mui-disabled': {
+                                            background: '#FFCD19',
+                                        },
+                                        '&:hover': {
+                                            backgroundColor: 'primary.main',
+                                        },
+                                    }}
                                     type='submit'
                                 >
-                                    Login
-                                </Button>
+                                    Sign in
+                                </LoadingButton>
                             </form>
                             <div
                                 style={{
@@ -224,7 +246,7 @@ const Login = () => {
                                             style={{
                                                 textDecoration: 'none',
                                                 cursor: 'pointer',
-                                                color: 'inherit',
+                                                color: 'black',
                                             }}
                                         >
                                             Signup

@@ -173,9 +173,16 @@ const ThemeLayout = ({ children }) => {
                                 border: '0.3px solid #696969',
                             },
                         },
-                        // helper text background color TODO: not working
+
+                        // helper text background color
+                        '&  .MuiFormHelperText-root.Mui-error': {
+                            backgroundColor: '#fef9e4',
+                            margin: 0,
+                            paddingTop: 3,
+                            paddingLeft: 3,
+                        },
                         '& .MuiFormHelperText-root': {
-                            backgroundColor: 'transparent !important',
+                            backgroundColor: '#fef9e4',
                         },
                     },
                 },

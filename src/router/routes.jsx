@@ -7,11 +7,11 @@ import Signup from '../components/pages/authPages/Signup.jsx'
 
 export const router = createBrowserRouter([
     {
-        path: '/',
+        path: '/admin/',
         element: <MainLayout />,
         children: [
             {
-                path: '/',
+                path: '/admin/',
                 element: <Home />,
             },
         ],
@@ -21,7 +21,7 @@ export const router = createBrowserRouter([
         element: <Signup />,
     },
     {
-        path: '/login',
+        path: '/',
         element: <Login />,
     },
 
