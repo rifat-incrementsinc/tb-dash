@@ -1,5 +1,5 @@
 import { useContext, useEffect } from 'react'
-import { GlobalContext } from '../contextProvider/GlobalContext'
+import { GlobalContext } from '../../contextProvider/GlobalContext.jsx'
 
 const Home = () => {
     const { projectTheme, userInfo } = useContext(GlobalContext)
@@ -8,9 +8,7 @@ const Home = () => {
         age: 33,
     }
 
-    useEffect(() => {
-
-    }, [])
+    useEffect(() => {}, [])
     return (
         <>
             <p>This is the home {projectTheme}</p>

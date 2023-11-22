@@ -15,6 +15,7 @@ import logo from '../assets/logo.svg'
 import { Avatar } from '@mui/material'
 import { useEffect, useState } from 'react'
 import { menuItems } from './MenuItems.jsx'
+import ExitToAppOutlinedIcon from '@mui/icons-material/ExitToAppOutlined'
 const drawerWidth = 240
 
 const Main = styled('main', { shouldForwardProp: (prop) => prop !== 'open' })(
@@ -139,54 +140,103 @@ export default function MainLayout() {
                 <Stack p={2} sx={{ mb: 2 }}>
                     <img src={logo} alt='logo' />
                 </Stack>
-                <List>
-                    {menuItems.map((item) => (
-                        <ListItem
-                            key={item.path}
-                            sx={{
-                                mx: 1,
-                                width: '90%',
-                                backgroundColor:
-                                    url === item.url ? 'textPrimary' : 'white',
-                                borderRadius: '10px',
-                                height: 48,
-                            }}
-                        >
-                            <Link
-                                to={item.path}
-                                style={{
-                                    textDecoration: 'none',
-                                    color: '#696969',
-                                    display: 'flex',
-                                    alignItems: 'center',
-                                    justifyContent: 'space-between',
-                                }}
-                            >
-                                {React.cloneElement(item.icon, {
-                                    sx: {
-                                        color:
-                                            url === item.url
-                                                ? '#FFCD19'
-                                                : 'primary',
-                                        mr: 2,
-                                    },
-                                })}
-                                <Typography
-                                    variant='bodyLarge'
-                                    component='div'
+                <Stack
+                    justifyContent={'space-between'}
+                    direction={'column'}
+                    sx={{ flexGrow: 1 }}
+                >
+                    <Stack>
+                        <List>
+                            {menuItems.map((item) => (
+                                <ListItem
+                                    key={item.path}
                                     sx={{
-                                        color:
+                                        mx: 1,
+                                        width: '90%',
+                                        backgroundColor:
                                             url === item.url
-                                                ? '#f9f9f9'
-                                                : '#696969',
+                                                ? 'textPrimary'
+                                                : 'white',
+                                        borderRadius: '10px',
+                                        height: 48,
+                                        // add transition
+                                        transition:
+                                            'background-color 0.3s ease',
                                     }}
                                 >
-                                    {item.label}
-                                </Typography>
-                            </Link>
-                        </ListItem>
-                    ))}
-                </List>
+                                    <Link
+                                        to={item.path}
+                                        style={{
+                                            textDecoration: 'none',
+                                            color: '#696969',
+                                            display: 'flex',
+                                            alignItems: 'center',
+                                            justifyContent: 'space-between',
+                                        }}
+                                    >
+                                        {React.cloneElement(item.icon, {
+                                            sx: {
+                                                color:
+                                                    url === item.url
+                                                        ? '#FFCD19'
+                                                        : 'primary',
+                                                mr: 2,
+                                            },
+                                        })}
+                                        <Typography
+                                            variant='bodyLarge'
+                                            component='div'
+                                            sx={{
+                                                color:
+                                                    url === item.url
+                                                        ? '#f9f9f9'
+                                                        : '#696969',
+                                            }}
+                                        >
+                                            {item.label}
+                                        </Typography>
+                                    </Link>
+                                </ListItem>
+                            ))}
+                        </List>
+                    </Stack>
+                    <Stack>
+                        <List>
+                            <ListItem
+                                sx={{
+                                    mx: 1,
+                                    width: '90%',
+                                    borderRadius: '10px',
+                                    height: 48,
+                                }}
+                            >
+                                <Link
+                                    to='/logout'
+                                    style={{
+                                        textDecoration: 'none',
+                                        color: '#696969',
+                                        display: 'flex',
+                                        alignItems: 'center',
+                                        justifyContent: 'space-between',
+                                    }}
+                                >
+                                    <ExitToAppOutlinedIcon
+                                        sx={{ color: 'primary', mr: 2 }}
+                                    />
+                                    <Typography
+                                        variant='bodyLarge'
+                                        component='div'
+                                        sx={{
+                                            color: '#696969',
+                                        }}
+                                    >
+                                        Logout
+                                    </Typography>
+                                </Link>
+                            </ListItem>
+                        </List>
+                    </Stack>
+                </Stack>
             </Drawer>
             <Main open={open}>
                 <DrawerHeader />
