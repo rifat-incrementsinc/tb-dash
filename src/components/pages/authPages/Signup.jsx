@@ -107,7 +107,7 @@ const Signup = () => {
                         alignItems: 'center',
                         justifyContent: 'center',
                         padding: '20px',
-                        transition: 'height 5s ease-in-out',
+                        transition: 'height 1s',
                     }}
                 >
                     <Stack
@@ -117,7 +117,6 @@ const Signup = () => {
                             alignItems: 'center',
                             justifyContent: 'center',
                             width: '450px',
-                            transition: 'height 5s ease-in-out',
                         }}
                     >
                         <Stack
@@ -453,7 +452,6 @@ const Signup = () => {
                                         <LoadingButton
                                             loading={buttonLoading}
                                             loadingPosition='center'
-                                            startIcon={<DoneOutlinedIcon />}
                                             variant='contained'
                                             sx={{
                                                 mt: 3,
@@ -471,7 +469,7 @@ const Signup = () => {
                                             }}
                                             type='submit'
                                         >
-                                            Sign in
+                                            Next
                                         </LoadingButton>
                                     </div>
                                 )}
