@@ -2,6 +2,7 @@ import React from 'react'
 import Stack from '@mui/material/Stack'
 import Typography from '@mui/material/Typography'
 import { Divider } from '@mui/material'
+import VisitorsChart from './VisitorsChart.jsx'
 
 const VisitorAnalytics = () => {
     return (
@@ -24,7 +25,9 @@ const VisitorAnalytics = () => {
                 </Typography>
             </Stack>
             <Divider sx={{ width: '100%' }} />
-            <Stack>hhhh</Stack>
+            <Stack>
+                <VisitorsChart />
+            </Stack>
         </div>
     )
 }
