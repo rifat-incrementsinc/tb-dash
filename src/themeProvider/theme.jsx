@@ -114,6 +114,15 @@ const ThemeLayout = ({ children }) => {
             errorBg: '#FED8D8',
             goldBg: '#FBEBC3',
             white: '#FFFFFF',
+            progressRed: {
+                main: '#B3261E',
+            },
+            progressGreen: {
+                main: '#19764E',
+            },
+            progressPurple: {
+                main: '#54008C',
+            },
         },
         components: {
             // body font
@@ -216,14 +225,6 @@ const ThemeLayout = ({ children }) => {
                             color: '#FFCD19',
                             borderColor: '#000',
                         },
-
-                        // '& .MuiSvgIcon-root:not(.MuiSvgIcon-root ~ .MuiSvgIcon-root)':
-                        //     {
-                        //         color: '#C5C5C5',
-                        //     },
-                        // '& .MuiSvgIcon-root + .MuiSvgIcon-root': {
-                        //     color: '#FFCD19',
-                        // },
                     },
                 },
             },
@@ -362,6 +363,16 @@ const ThemeLayout = ({ children }) => {
                         '& .MuiPaginationItem-root:hover': {
                             backgroundColor: '#FFCD19',
                         },
+                    },
+                },
+            },
+            //      MuiLinearProgress height , width
+            MuiLinearProgress: {
+                styleOverrides: {
+                    root: {
+                        height: '10px',
+                        width: '100%',
+                        borderRadius: '10px',
                     },
                 },
             },
