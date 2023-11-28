@@ -1,5 +1,5 @@
 import { useContext, useEffect } from 'react'
-import { GlobalContext } from '../../contextProvider/GlobalContext.jsx'
+import { GlobalContext } from '../contextProvider/GlobalContext.jsx'
 
 const Home = () => {
     const { projectTheme, userInfo } = useContext(GlobalContext)

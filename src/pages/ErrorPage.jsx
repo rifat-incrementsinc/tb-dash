@@ -1,7 +1,7 @@
 import React from 'react'
 import { Button, Stack, Typography } from '@mui/material'
 import { Link } from 'react-router-dom'
-import animationData from '../../assets/lottie/error.json'
+import animationData from '../assets/lottie/error.json'
 import Lottie from 'react-lottie'
 const defaultOptions = {
     loop: true,

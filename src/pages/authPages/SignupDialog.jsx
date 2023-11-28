@@ -1,7 +1,7 @@
 import React from 'react'
 import Lottie from 'react-lottie'
 import { Button, Dialog, Stack, Typography } from '@mui/material'
-import animationData from '../../../assets/lottie/Registration Completed.json'
+import animationData from '../../assets/lottie/Registration Completed.json'
 const defaultOptions = {
     loop: true,
     autoplay: true,
