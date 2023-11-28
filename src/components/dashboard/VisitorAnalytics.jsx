@@ -9,11 +9,10 @@ const VisitorAnalytics = () => {
             style={{
                 width: '100%',
                 marginTop: '20px',
-
                 borderRadius: '15px',
                 backgroundColor: '#fff',
                 boxShadow: '0px 1px 3px 0px #1B171E1A',
-                height: '100%',
+                marginBottom: '20px',
             }}
         >
             <Stack direction={'row'} justifyContent={'space-between'} p={2}>
@@ -25,7 +24,7 @@ const VisitorAnalytics = () => {
                 </Typography>
             </Stack>
             <Divider sx={{ width: '100%' }} />
-            <Stack></Stack>
+            <Stack>hhhh</Stack>
         </div>
     )
 }

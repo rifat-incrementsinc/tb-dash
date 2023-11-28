@@ -5,6 +5,8 @@ import tenders from '../assets/proposal 1.png'
 import Stack from '@mui/material/Stack'
 import { Grid } from '@mui/material'
 import VisitorAnalytics from '../components/dashboard/VisitorAnalytics.jsx'
+import UsersAnalytics from '../components/dashboard/UsersAnalytics.jsx'
+import TopTenders from '../components/dashboard/TopTenders.jsx'
 const CardData = [
     {
         title: 'Total Tenders/Proposals',
@@ -45,7 +47,7 @@ const Home = () => {
     useEffect(() => {}, [])
     return (
         <div style={{ marginTop: '30px' }}>
-            <Grid container>
+            <Grid container spacing={2}>
                 <Grid item xs={12} md={9}>
                     <Grid
                         container
@@ -63,7 +65,10 @@ const Home = () => {
                     </Grid>
                     <VisitorAnalytics />
                 </Grid>
-                <Grid item xs={12} md={3}></Grid>
+                <Grid item xs={12} md={3}>
+                    <UsersAnalytics />
+                    <TopTenders />
+                </Grid>
             </Grid>
         </div>
     )
