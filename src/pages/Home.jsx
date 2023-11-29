@@ -48,7 +48,7 @@ const Home = () => {
     return (
         <div style={{ marginTop: '30px' }}>
             <Grid container spacing={2}>
-                <Grid item xs={12} md={9}>
+                <Grid item xs={12} md={7} lg={9}>
                     <Grid
                         container
                         sx={{
@@ -65,7 +65,7 @@ const Home = () => {
                     </Grid>
                     <VisitorAnalytics />
                 </Grid>
-                <Grid item xs={12} md={3}>
+                <Grid item xs={12} md={5} lg={3}>
                     <UsersAnalytics />
                     <TopTenders />
                 </Grid>

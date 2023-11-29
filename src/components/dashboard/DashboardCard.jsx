@@ -15,7 +15,8 @@ const DashboardCard = ({
         <Grid
             item
             sm={12}
-            md={3.9}
+            lg={3.9}
+            maxWidth={'460px'}
             sx={{
                 backgroundColor: bgColor,
                 padding: '24px',

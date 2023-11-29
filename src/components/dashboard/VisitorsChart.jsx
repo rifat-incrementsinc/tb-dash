@@ -70,7 +70,7 @@ const VisitorsChart = () => {
                 options={chartOptions}
                 series={chartSeries}
                 type='area'
-                height={350}
+                height={450}
             />
         </div>
     )
