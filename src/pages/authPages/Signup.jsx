@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import bgImage from '../../../assets/bg_tb.png'
+import bgImage from '../../assets/bg_tb.png'
 import {
     Grid,
     TextField,
@@ -13,11 +13,11 @@ import {
     Checkbox,
 } from '@mui/material'
 import Stack from '@mui/material/Stack'
-import FileUpload from '../../shared/FileUpload.jsx'
+import FileUpload from '../../components/shared/FileUpload.jsx'
 import FormControlLabel from '@mui/material/FormControlLabel'
 import { useForm, Controller } from 'react-hook-form'
 import SignupDialog from './SignupDialog.jsx'
-import Stepper from '../../shared/Stepper.jsx'
+import Stepper from '../../components/shared/Stepper.jsx'
 import CheckBoxOutlinedIcon from '@mui/icons-material/CheckBoxOutlined'
 import { toast } from 'react-toastify'
 import { Link } from 'react-router-dom'

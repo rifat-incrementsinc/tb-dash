@@ -114,6 +114,15 @@ const ThemeLayout = ({ children }) => {
             errorBg: '#FED8D8',
             goldBg: '#FBEBC3',
             white: '#FFFFFF',
+            progressRed: {
+                main: '#B3261E',
+            },
+            progressGreen: {
+                main: '#19764E',
+            },
+            progressPurple: {
+                main: '#54008C',
+            },
         },
         components: {
             // body font
@@ -149,6 +158,19 @@ const ThemeLayout = ({ children }) => {
                     },
                 },
             },
+            MuiSelect: {
+                styleOverrides: {
+                    select: {
+                        '&:hover': {
+                            borderColor: 'red',
+                        },
+                        '&:before': {
+                            borderColor: 'red',
+                        },
+                    },
+                },
+            },
+
             // Mui textfield focus color change to black
             MuiTextField: {
                 styleOverrides: {
@@ -216,83 +238,10 @@ const ThemeLayout = ({ children }) => {
                             color: '#FFCD19',
                             borderColor: '#000',
                         },
-
-                        // '& .MuiSvgIcon-root:not(.MuiSvgIcon-root ~ .MuiSvgIcon-root)':
-                        //     {
-                        //         color: '#C5C5C5',
-                        //     },
-                        // '& .MuiSvgIcon-root + .MuiSvgIcon-root': {
-                        //     color: '#FFCD19',
-                        // },
                     },
                 },
             },
 
-            // Mui Switch color change, thumb and track change
-            // MuiSwitch: {
-            //     styleOverrides: {
-            //         switchBase: {
-            //             '&.Mui-checked': {
-            //                 color: '#ff1990',
-            //             },
-            //         },
-            //         thumb: {
-            //             color: '#ff1990',
-            //         },
-            //         track: {
-            //             color: '#ff1990',
-            //         },
-            //     },
-            // },
-            // MuiSwitch: {
-            //     styleOverrides: {
-            //         switchBase: {
-            //             padding: 2,
-            //             margin: 11,
-            //
-            //             transitionDuration: '300ms',
-            //             '&.Mui-checked': {
-            //                 transform: 'translateX(16px)',
-            //                 color: '#FFCD19',
-            //                 '& + .MuiSwitch-track': {
-            //                     backgroundColor: '#000', // Use a fixed color value
-            //                     opacity: 1,
-            //                     border: 0,
-            //                 },
-            //                 '&.Mui-disabled + .MuiSwitch-track': {
-            //                     color: '#FFCD19',
-            //
-            //                     opacity: 0.5,
-            //                 },
-            //             },
-            //             // '&.Mui-focusVisible .MuiSwitch-thumb': {
-            //             //     color: '#33cf4d',
-            //             //     border: '6px solid #fff',
-            //             // },
-            //             '&.Mui-disabled .MuiSwitch-thumb': {
-            //                 color: '#FFCD19',
-            //             },
-            //             '&.Mui-disabled + .MuiSwitch-track': {
-            //                 color: '#FFCD19',
-            //                 opacity: 0.7,
-            //             },
-            //         },
-            //         thumb: {
-            //             boxSizing: 'border-box',
-            //             width: 17,
-            //             height: 17,
-            //             backgroundColor: '#FFCD19',
-            //         },
-            //         track: {
-            //             boxSizing: 'border-box',
-            //             width: 36,
-            //             height: 20,
-            //             borderRadius: 36 / 2,
-            //             backgroundColor: '#C5C5C5', // Use a fixed color value
-            //             opacity: 0.7,
-            //         },
-            //     },
-            // },
             MuiTableHead: {
                 styleOverrides: {
                     root: {
@@ -347,21 +296,28 @@ const ThemeLayout = ({ children }) => {
             MuiPagination: {
                 styleOverrides: {
                     root: {
-                        // '& .MuiPaginationItem-root': {
-                        //     color: '#000',
-                        // },
-                        //
-                        // '& .MuiPaginationItem-root.Mui-selected': {
-                        //     color: '#FFCD19',
-                        // },
-                        //
-                        // '& .MuiPaginationItem-root.Mui-disabled': {
-                        //     color: '#FFCD19',
-                        // },
                         // button hover color
                         '& .MuiPaginationItem-root:hover': {
                             backgroundColor: '#FFCD19',
                         },
+                    },
+                },
+            },
+            // MUI paper background color
+            MuiPaper: {
+                styleOverrides: {
+                    root: {
+                        backgroundColor: '#FFFFFF',
+                    },
+                },
+            },
+            //      MuiLinearProgress height , width
+            MuiLinearProgress: {
+                styleOverrides: {
+                    root: {
+                        height: '10px',
+                        width: '100%',
+                        borderRadius: '10px',
                     },
                 },
             },
